@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>틱택토</title>
+    <meta name="description" content="2인용 틱택토 게임" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orbit"></div>
+    <div class="bg-grid"></div>
+
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">간단하지만 끝까지 가는</p>
+        <h1>틱택토</h1>
+        <p class="sub">X와 O가 번갈아 가며 3칸을 연결하면 승리합니다.</p>
+      </header>
+
+      <section class="card">
+        <div class="status">
+          <span id="turnText">X 차례</span>
+          <span id="scoreText">X 0 : 0 O</span>
+        </div>
+
+        <div class="board" id="board" aria-live="polite" aria-label="틱택토 게임판"></div>
+
+        <div class="controls">
+          <button id="resetBtn" class="primary">한 판 더</button>
+          <button id="clearScoreBtn" class="ghost">점수 초기화</button>
+          <button id="undoBtn" class="ghost">한 수 되돌리기</button>
+        </div>
+
+        <div class="meta">
+          <span class="locked">플레이어: X · AI: O</span>
+          <span class="locked">AI 기본 난이도</span>
+        </div>
+
+        <p class="hint">* AI는 기본 난이도입니다. 완벽한 전략은 아닙니다.</p>
+      </section>
+
+      <section class="history">
+        <div class="history-head">
+          <h2>최근 결과</h2>
+          <button id="clearHistory" class="text">기록 지우기</button>
+        </div>
+        <ul id="historyList" class="history-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">준비 완료</div>
+    <script src="script.js" defer></script>
+  </body>
+</html>
