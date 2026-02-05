@@ -66,7 +66,7 @@ function updateStatus() {
   const currentSymbol = xIsNext ? 'X' : 'O';
   const actor = currentSymbol === playerSymbol ? '내 차례' : 'AI 차례';
   turnText.textContent = `${currentSymbol} · ${actor}`;
-  scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
+  scoreText.textContent = `무승부 ${scores.draw} · 플레이어 ${scores.player} : ${scores.ai} AI`;
 }
 
 function updateControls() {
