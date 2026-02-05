@@ -69,6 +69,10 @@ function updateStatus() {
   scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
 }
 
+function updateControls() {
+  resetBtn.disabled = !gameOver;
+}
+
 function getWinnerLine() {
   for (const line of WIN_LINES) {
     const [a, b, c] = line;
@@ -122,6 +126,7 @@ function handleEnd() {
     turnText.textContent = `${winner} 승리!`;
     recordHistory(`${winner} 승리`);
     showToast(`${winner} 승리!`);
+    updateControls();
     return;
   }
 
@@ -131,6 +136,7 @@ function handleEnd() {
     turnText.textContent = '무승부!';
     recordHistory('무승부');
     showToast('무승부!');
+    updateControls();
   }
 }
 
@@ -266,6 +272,7 @@ function resetGame() {
   xIsNext = true;
   renderBoard();
   updateStatus();
+  updateControls();
   triggerAIMoveIfNeeded();
 }
 
