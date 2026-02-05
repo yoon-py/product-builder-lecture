@@ -1,13 +1,7 @@
 const boardEl = document.getElementById('board');
 const scoreText = document.getElementById('scoreText');
 const resetBtn = document.getElementById('resetBtn');
-<<<<<<< HEAD
 const playerSelect = document.getElementById('playerSelect');
-=======
-const clearScoreBtn = document.getElementById('clearScoreBtn');
-const playerLabel = document.getElementById('playerLabel');
-const aiLabel = document.getElementById('aiLabel');
->>>>>>> parent of 5a29681 (tic-tac-toe12)
 const difficultySelect = document.getElementById('difficultySelect');
 const gameCard = document.getElementById('gameCard');
 const effectLayer = document.getElementById('effectLayer');
@@ -41,6 +35,10 @@ function showToast(message) {
   toast.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function updateScore() {
+  scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
 }
 
 function playResultEffect(type) {
@@ -114,11 +112,6 @@ function renderBoard() {
   }
 }
 
-function updateStatus() {
-  if (gameOver) return;
-  scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
-}
-
 function updateControls() {
   resetBtn.disabled = !gameOver;
 }
@@ -181,6 +174,7 @@ function handleEnd() {
     if (winner === playerSymbol) {
       launchConfetti();
     }
+    updateScore();
     updateControls();
     return;
   }
@@ -202,7 +196,6 @@ function placeMove(index, player) {
   board[index] = player;
   xIsNext = player === 'O';
   renderBoard();
-  updateStatus();
   handleEnd();
 }
 
@@ -314,17 +307,15 @@ function triggerAIMoveIfNeeded() {
   setTimeout(aiMove, 350);
 }
 
-function swapRoles() {
-  playerSymbol = playerSymbol === 'X' ? 'O' : 'X';
+function setRoles(nextPlayerSymbol) {
+  playerSymbol = nextPlayerSymbol;
   aiSymbol = playerSymbol === 'X' ? 'O' : 'X';
-
   playerSelect.value = playerSymbol;
 }
 
 function swapRoles() {
   const nextPlayerSymbol = playerSymbol === 'X' ? 'O' : 'X';
   setRoles(nextPlayerSymbol);
-
 }
 
 function resetGame() {
@@ -332,15 +323,13 @@ function resetGame() {
   gameOver = false;
   xIsNext = true;
   renderBoard();
-  updateStatus();
+  updateScore();
   updateControls();
   playResultEffect(null);
   playOverlayEffect(null);
   showResultBanner(null);
   triggerAIMoveIfNeeded();
 }
-
-
 
 function clearHistory() {
   historyList.innerHTML = '';
@@ -354,6 +343,10 @@ resetBtn.addEventListener('click', () => {
 clearHistoryBtn.addEventListener('click', clearHistory);
 difficultySelect.addEventListener('change', () => {
   showToast(`난이도: ${difficultySelect.options[difficultySelect.selectedIndex].text}`);
+});
+playerSelect.addEventListener('change', () => {
+  setRoles(playerSelect.value);
+  resetGame();
 });
 
 resetGame();
