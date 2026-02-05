@@ -1,10 +1,6 @@
 const boardEl = document.getElementById('board');
-const turnText = document.getElementById('turnText');
 const scoreText = document.getElementById('scoreText');
 const resetBtn = document.getElementById('resetBtn');
-const clearScoreBtn = document.getElementById('clearScoreBtn');
-const playerLabel = document.getElementById('playerLabel');
-const aiLabel = document.getElementById('aiLabel');
 const playerSelect = document.getElementById('playerSelect');
 const difficultySelect = document.getElementById('difficultySelect');
 const gameCard = document.getElementById('gameCard');
@@ -114,10 +110,7 @@ function renderBoard() {
 
 function updateStatus() {
   if (gameOver) return;
-  const currentSymbol = xIsNext ? 'X' : 'O';
-  const actor = currentSymbol === playerSymbol ? '내 차례' : 'AI 차례';
-  turnText.textContent = `${currentSymbol} · ${actor}`;
-  scoreText.textContent = `무승부 ${scores.draw} · 플레이어 ${scores.player} : ${scores.ai} AI`;
+  scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
 }
 
 function updateControls() {
@@ -174,7 +167,6 @@ function handleEnd() {
     } else {
       scores.ai += 1;
     }
-    turnText.textContent = `${winner} 승리!`;
     recordHistory(`${winner} 승리`);
     showToast(`${winner} 승리!`);
     playResultEffect(winner === playerSymbol ? 'win' : 'lose');
@@ -190,7 +182,6 @@ function handleEnd() {
   if (isDraw()) {
     gameOver = true;
     scores.draw += 1;
-    turnText.textContent = '무승부!';
     recordHistory('무승부');
     showToast('무승부!');
     playResultEffect('draw');
@@ -320,8 +311,6 @@ function triggerAIMoveIfNeeded() {
 function setRoles(nextPlayerSymbol) {
   playerSymbol = nextPlayerSymbol;
   aiSymbol = playerSymbol === 'X' ? 'O' : 'X';
-  playerLabel.textContent = `플레이어: ${playerSymbol}`;
-  aiLabel.textContent = `AI: ${aiSymbol}`;
   playerSelect.value = playerSymbol;
 }
 
@@ -344,11 +333,6 @@ function resetGame() {
 }
 
 
-function clearScores() {
-  scores = { player: 0, ai: 0, draw: 0 };
-  updateStatus();
-  showToast('점수를 초기화했습니다');
-}
 
 function clearHistory() {
   historyList.innerHTML = '';
@@ -359,7 +343,6 @@ resetBtn.addEventListener('click', () => {
   swapRoles();
   resetGame();
 });
-clearScoreBtn.addEventListener('click', clearScores);
 clearHistoryBtn.addEventListener('click', clearHistory);
 difficultySelect.addEventListener('change', () => {
   showToast(`난이도: ${difficultySelect.options[difficultySelect.selectedIndex].text}`);

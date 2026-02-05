@@ -21,21 +21,14 @@
 
       <section class="card" id="gameCard">
         <div id="resultBanner" class="result-banner" aria-live="polite"></div>
-        <div class="status">
-          <span id="turnText">X 차례</span>
-          <span id="scoreText">X 0 : 0 O</span>
-        </div>
-
+        <div class="score" id="scoreText">플레이어 0 : 0 AI</div>
         <div class="board" id="board" aria-live="polite" aria-label="틱택토 게임판"></div>
 
         <div class="controls">
           <button id="resetBtn" class="primary">한 판 더</button>
-          <button id="clearScoreBtn" class="ghost">점수 초기화</button>
         </div>
 
         <div class="meta">
-          <span class="locked" id="playerLabel">플레이어: X</span>
-          <span class="locked" id="aiLabel">AI: O</span>
           <label class="select">
             <span>내 심볼</span>
             <select id="playerSelect">

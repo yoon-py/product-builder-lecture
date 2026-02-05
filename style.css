@@ -209,6 +209,12 @@ h1 {
   margin: 0 auto;
 }
 
+.score {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
 .cell {
   aspect-ratio: 1 / 1;
   border-radius: 16px;
@@ -244,6 +250,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
 }
 
 button {
