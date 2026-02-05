@@ -1,7 +1,13 @@
 const boardEl = document.getElementById('board');
 const scoreText = document.getElementById('scoreText');
 const resetBtn = document.getElementById('resetBtn');
+<<<<<<< HEAD
 const playerSelect = document.getElementById('playerSelect');
+=======
+const clearScoreBtn = document.getElementById('clearScoreBtn');
+const playerLabel = document.getElementById('playerLabel');
+const aiLabel = document.getElementById('aiLabel');
+>>>>>>> parent of 5a29681 (tic-tac-toe12)
 const difficultySelect = document.getElementById('difficultySelect');
 const gameCard = document.getElementById('gameCard');
 const effectLayer = document.getElementById('effectLayer');
@@ -308,15 +314,17 @@ function triggerAIMoveIfNeeded() {
   setTimeout(aiMove, 350);
 }
 
-function setRoles(nextPlayerSymbol) {
-  playerSymbol = nextPlayerSymbol;
+function swapRoles() {
+  playerSymbol = playerSymbol === 'X' ? 'O' : 'X';
   aiSymbol = playerSymbol === 'X' ? 'O' : 'X';
+
   playerSelect.value = playerSymbol;
 }
 
 function swapRoles() {
   const nextPlayerSymbol = playerSymbol === 'X' ? 'O' : 'X';
   setRoles(nextPlayerSymbol);
+
 }
 
 function resetGame() {
@@ -346,10 +354,6 @@ resetBtn.addEventListener('click', () => {
 clearHistoryBtn.addEventListener('click', clearHistory);
 difficultySelect.addEventListener('change', () => {
   showToast(`난이도: ${difficultySelect.options[difficultySelect.selectedIndex].text}`);
-});
-playerSelect.addEventListener('change', () => {
-  setRoles(playerSelect.value);
-  resetGame();
 });
 
 resetGame();
