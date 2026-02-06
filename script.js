@@ -43,7 +43,7 @@ function vibrate(pattern) {
 }
 
 function updateScore() {
-  scoreText.textContent = `플레이어 ${scores.player} : ${scores.ai} AI`;
+  scoreText.textContent = `Player ${scores.player} : ${scores.ai} AI`;
 }
 
 function playResultEffect(type) {
@@ -171,8 +171,8 @@ function handleEnd() {
     } else {
       scores.ai += 1;
     }
-    recordHistory(`${winner} 승리`);
-    showToast(`${winner} 승리!`);
+    recordHistory(`${winner} wins`);
+    showToast(`${winner} wins!`);
     playResultEffect(winner === playerSymbol ? 'win' : 'lose');
     playOverlayEffect(winner === playerSymbol ? 'win' : 'lose');
     showResultBanner(null);
@@ -190,8 +190,8 @@ function handleEnd() {
   if (isDraw()) {
     gameOver = true;
     scores.draw += 1;
-    recordHistory('무승부');
-    showToast('무승부!');
+    recordHistory('Draw');
+    showToast('Draw!');
     playResultEffect('draw');
     playOverlayEffect('draw');
     showResultBanner(null);
@@ -342,7 +342,7 @@ function resetGame() {
 
 function clearHistory() {
   historyList.innerHTML = '';
-  showToast('기록을 지웠습니다');
+  showToast('History cleared');
 }
 
 resetBtn.addEventListener('click', () => {
@@ -351,7 +351,7 @@ resetBtn.addEventListener('click', () => {
 });
 clearHistoryBtn.addEventListener('click', clearHistory);
 difficultySelect.addEventListener('change', () => {
-  showToast(`난이도: ${difficultySelect.options[difficultySelect.selectedIndex].text}`);
+  showToast(`Difficulty: ${difficultySelect.options[difficultySelect.selectedIndex].text}`);
 });
 playerSelect.addEventListener('change', () => {
   setRoles(playerSelect.value);

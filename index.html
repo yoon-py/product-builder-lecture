@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>틱택토</title>
-    <meta name="description" content="2인용 틱택토 게임" />
+    <title>Tic-Tac-Toe</title>
+    <meta name="description" content="Tic-tac-toe game with AI" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -16,32 +16,32 @@
 
     <main class="app">
       <header class="hero">
-        <h1>틱택토</h1>
+        <h1>Tic-Tac-Toe</h1>
       </header>
 
       <section class="card" id="gameCard">
         <div id="resultBanner" class="result-banner" aria-live="polite"></div>
-        <div class="score" id="scoreText">플레이어 0 : 0 AI</div>
-        <div class="board" id="board" aria-live="polite" aria-label="틱택토 게임판"></div>
+        <div class="score" id="scoreText">Sia 0 : 0 AI</div>
+        <div class="board" id="board" aria-live="polite" aria-label="Tic-tac-toe board"></div>
 
         <div class="controls">
-          <button id="resetBtn" class="primary">한 판 더</button>
+          <button id="resetBtn" class="primary">Next Round</button>
         </div>
 
         <div class="meta">
           <label class="select">
-            <span>내 심볼</span>
+            <span>My Symbol</span>
             <select id="playerSelect">
               <option value="X" selected>X</option>
               <option value="O">O</option>
             </select>
           </label>
           <label class="select">
-            <span>AI 난이도</span>
+            <span>AI Difficulty</span>
             <select id="difficultySelect">
-              <option value="easy">쉬움</option>
-              <option value="medium" selected>중간</option>
-              <option value="hard">어려움</option>
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
             </select>
           </label>
         </div>
@@ -50,33 +50,33 @@
 
       <section class="history">
         <div class="history-head">
-          <h2>최근 결과</h2>
-          <button id="clearHistory" class="text">기록 지우기</button>
+          <h2>Recent Results</h2>
+          <button id="clearHistory" class="text">Clear History</button>
         </div>
         <ul id="historyList" class="history-list" aria-live="polite"></ul>
       </section>
 
       <section class="card contact">
-        <h2>문의하기</h2>
+        <h2>Contact</h2>
         <form class="contact-form" action="https://formspree.io/f/xnjbanwa" method="POST">
           <label>
-            <span>이름</span>
+            <span>Name</span>
             <input type="text" name="name" required />
           </label>
           <label>
-            <span>이메일</span>
+            <span>Email</span>
             <input type="email" name="email" required />
           </label>
           <label class="full">
-            <span>문의 내용</span>
+            <span>Message</span>
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <button type="submit" class="primary">보내기</button>
+          <button type="submit" class="primary">Send</button>
         </form>
       </section>
     </main>
 
-    <div class="toast" id="toast" role="status" aria-live="polite">준비 완료</div>
+    <div class="toast" id="toast" role="status" aria-live="polite">Ready</div>
     <script src="script.js" defer></script>
   </body>
 </html>
